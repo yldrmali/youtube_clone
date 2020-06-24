@@ -1,0 +1,259 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(90px, 90px) auto;
+  grid-template-rows: 60px auto;
+  grid-template-areas:
+    'header header'
+    'menu container';
+  transition: all 0.35s ease-in-out;
+}
+
+.container.active {
+  grid-template-columns: minmax(300px, 20%) auto;
+}
+
+/* HEADER */
+.header {
+  grid-area: header;
+  padding: 0 20px;
+  background: #fff;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 20px;
+  grid-template-areas: 'logo search icons';
+}
+
+.header .logo-container {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+}
+
+.header .logo-container .button-menu {
+  border: none;
+  padding: 10px;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.header .logo-container .button-menu:hover {
+  background: #e7e7e7;
+}
+
+.header .logo-container .logo .fab.fa-youtube {
+  color: #ff0000;
+  /* padding: 7px 12px; */
+  /* color: #fff; */
+  /* border-radius: 4px; */
+  font-size: 24px;
+  position: relative;
+  top: 1px;
+  margin-right: 4px;
+}
+
+.header .logo-container .logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+  position: relative;
+  top: 2px;
+}
+
+.header .search-bar {
+  grid-area: search;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header .search-bar input {
+  min-width: 60%;
+  padding: 0 15px;
+  height: 35px;
+  line-height: 35px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.header .search-bar button {
+  height: 35px;
+  min-width: 25px;
+  border: 1px solid #ccc;
+  border-left: none;
+  color: #545454;
+  background: #f8f8f8;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.header .search-bar button:hover {
+  background: #f5f5f5;
+}
+
+
+.header .header-buttons {
+  grid-area: icons;
+  display: flex;
+  align-items: center;
+}
+.header .header-buttons button {
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  padding: 7px 12px;
+  border-radius: 50%;
+  color: #828282;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.header .header-buttons button:hover {
+  background: #e7e7e7;
+}
+
+/*MENU  */
+.menu-lateral {
+  grid-area: menu;
+  background: #fff;
+}
+.menu-lateral a {
+  display: block;
+  padding: 15px 35px;
+  color: #000;
+  min-width: 800px;
+}
+
+.menu-lateral a:hover,
+.menu-lateral a:hover i {
+  background: #e5e5e5;
+  color: red;
+}
+
+.menu-lateral a:active {
+  background: #e5e5e5;
+  font-weight: bold;
+}
+.menu-lateral .fas {
+  color: #606060;
+  margin-right: 35px;
+  width: 20px;
+  text-align: center;
+}
+
+.menu-lateral a.active .fas {
+  color: #ff0000;
+}
+.menu-lateral hr {
+  margin: 20px 0;
+  border: 1px solid #dfdfdf;
+}
+
+/* MAIN  */
+
+.main {
+  grid-area: container;
+  background: #f9f9f9;
+  padding: 40px;
+}
+
+.main .title {
+  margin-bottom: 20px;
+}
+
+.main .grid-video {
+  display: grid;
+  grid-gap: 40px 20px;
+  grid-template-columns: repeat(3, 1fr);
+
+}
+
+.main .grid-video iframe {
+  width:100%
+}
+
+.grid-video .video h3{
+  color: #212121;
+}
+.grid-video .video h5{
+  color: #606060;
+
+}
+
+
+/*media  */
+
+@media screen and (max-width: 1280px) {
+  .main .grid-video {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .header .logo-container .logo span {
+    display: none;
+  }
+  .header .search-bar input {
+    min-width: 70%;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .main .grid-video {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+@media screen and (max-width: 720px) {
+  .container {
+    grid-template-rows: auto;
+  }
+  .header {
+    padding: 20px;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+      'logo icon'
+      'search search';
+  }
+  .header .logo-container {
+    grid-area: logo;
+  }
+  .header .header-buttons {
+    grid-area: icon;
+  }
+  .header .search-bar {
+    grid-area: search;
+  }
+  .header .search-bar input {
+    width: 100%;
+  }
+
+  .header .logo-container .logo span {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
